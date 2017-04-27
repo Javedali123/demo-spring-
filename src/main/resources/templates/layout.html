@@ -22,9 +22,9 @@
         <a href="index.html" th:href="@{/}">Home</a>
         <a href="users/login.html" th:href="@{/users/login}">Login</a>
         <a href="register.html" th:href="@{/user/register}">Register</a>
-        <a href="posts/index.html" th:href="@{/posts}">Posts</a>
-        <a href="posts/create.html" th:href="@{/posts/create}">Create Post</a>
-        <a href="users/index.html" th:href="@{/users}">Users</a>
+        <a href="posts/index.html" th:href="@{/user/postedit}">Posts</a>
+        <a href="create.html" th:href="@{/user/create}">Create Post</a>
+        <a href="postedit.html" th:href="@{/users}">Users</a>
         <div id="logged-in-info">
             <span>Hello, <b>(user)</b></span>
             <form method="post" th:action="@{/users/logout}">
@@ -49,7 +49,7 @@
 <p>Welcome to the Spring MVC Blog.</p>
 
 <footer th:fragment="site-footer">
-    &copy; Spring MVC Blog System, 2016
+    &copy; Javed's Spring MVC Blog 2017
 </footer>
 </body>
 

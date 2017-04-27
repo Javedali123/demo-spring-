@@ -67,13 +67,13 @@ public class PostServiceStubImpl implements PostService {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void delete(Post post) {
         for (int i = 0; i < this.posts.size(); i++) {
-            if (Objects.equals(this.posts.get(i).getId(), id)) {
+            if (Objects.equals(this.posts.get(i).getId(), post)) {
                 this.posts.remove(i);
                 return;
             }
         }
-        throw new RuntimeException("Post not found: " + id);
+        throw new RuntimeException("Post not found: " + post);
     }
 }

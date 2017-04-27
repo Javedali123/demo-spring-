@@ -20,35 +20,37 @@ import java.util.List;
 public class PostServiceJpaImpl implements PostService {
 
     @Autowired
-    private PostRepository postRepo;
+    private PostRepository postRepository;
 
     @Override
     public List<Post> findAll() {
-        return this.postRepo.findAll();
+        return this.postRepository.findAll();
     }
 
     @Override
     public List<Post> findLatest5() {
-        return this.postRepo.findLatest5Posts();
+        return this.postRepository.findLatest5Posts();
     }
 
     @Override
     public Post findById(Long id) {
-        return this.postRepo.findOne(id);
+        return this.postRepository.findOne(id);
     }
 
     @Override
-    public Post create(Post post) {
-        return null;
+    public Post create(Post u) {
+
+        return this.postRepository.save(u);
     }
 
     @Override
-    public Post edit(Post post) {
-        return null;
+    public Post edit(Post u) {
+
+        return this.edit(u);
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void delete(Post post) { postRepository.delete(post);
 
     }
 }

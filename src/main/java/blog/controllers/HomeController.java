@@ -27,7 +27,7 @@ public class HomeController {
     @Autowired
     private NotificationService notificationService;
 
-    @RequestMapping("/")
+    @RequestMapping(value={"/"})
     public String home(Model model) {
         List<Post> latest5Posts = postService.findLatest5();
         model.addAttribute("latest5posts", latest5Posts);
