@@ -15,13 +15,16 @@
         <th>Body</th>
         <th>Author ID</th>
         <th>Date</th>
-        <th>Action</th>
+        <th>Update</th>
+        <th>Delete</th>
     </tr>
     <tr th:each="post : ${posts}">
         <td th:text="${post.title}">Alex</td>
         <td th:text="${post.body}">Parkinson</td>
         <td th:text="${post.author}">alex</td>
         <td th:text="${post.date}">17-jan02017</td>
+        <td><a href="#" th:href="@{/user/update/}+${post.id}">Update</a> </td>
+        <td><a href="#" th:href="@{/user/delete/}+${post.id}">Delete</a> </td>
 
     </tr>
 
@@ -33,7 +36,8 @@
     <ol>
         <li th:each="post : ${posts}">
             <span th:text="${post.title}+' '+${post.body}+', '+${post.author}+', '+${post.date}"></span>
-            <td><a href="#" th:href="@{user/postedit/}+${post.id}">delete</a> </td>
+            <td><a href="#" th:href="@{/user/update/}+${post.id}">Update</a> </td>
+            <td><a href="#" th:href="@{/user/delete/}+${post.id}">delete</a> </td>
         </li>
     </ol>
 </div>

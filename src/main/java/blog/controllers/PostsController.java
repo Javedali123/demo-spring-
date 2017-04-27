@@ -50,15 +50,33 @@ public class PostsController {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "/update/{post}", method = RequestMethod.GET)
 
-    @RequestMapping (value = "/postedit/{post}", method = RequestMethod.GET)
+    public String updateView(Model model, @PathVariable Post post)
+    {
+        model.addAttribute("post", post);
+
+        return "update";
+
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+
+    public String update(@ModelAttribute("post") Post post)
+    {
+        postService.create(post);
+
+        return "redirect:/user/postedit";
+    }
+
+    @RequestMapping (value = "/delete/{post}", method = RequestMethod.GET)
 
     public String delete(@PathVariable Post post)
     {
 
         postService.delete(post);
 
-        return "redirect:/user/create";
+        return "redirect:/user/postedit";
 
     }
 
