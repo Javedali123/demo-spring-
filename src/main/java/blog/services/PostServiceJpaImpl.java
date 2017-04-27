@@ -44,13 +44,13 @@ public class PostServiceJpaImpl implements PostService {
     }
 
     @Override
-    public Post edit(Post post) {
+    public Post edit(Post u) {
 
-        return null;
+        return this.edit(u);
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void delete(Post post) { postRepository.delete(post);
 
     }
 }
