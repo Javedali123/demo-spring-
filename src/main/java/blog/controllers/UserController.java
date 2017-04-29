@@ -64,16 +64,25 @@ public class UserController {
         if(bindingResult.hasErrors())
         {
             model.addAttribute("user", user);
-            notificationService.addErrorMessage("Please Fill in all Fields");
+            notificationService.addErrorMessage("Please Fill in all Fields!");
             return "login";
         }
 
+        if(userService.validateLogin(user)==null || userService.validateLogin(user).size()==0)
+        {
+            model.addAttribute("user", user);
 
+            return "login";
 
-
+        }
+        notificationService.addInfoMessage("Welcome");
         return "redirect:/";
     }
-
 }
 
-//"register is successful for"+user.getFullName()+" "+user.getUsername()+" "+user.getPasswordHash();
+
+
+
+
+
+
