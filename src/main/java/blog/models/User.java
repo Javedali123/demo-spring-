@@ -4,6 +4,8 @@ package blog.models;
  * Created by Windows 7 on 20-Apr-17.
  */
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,14 +17,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 30, unique = true)
-    private String username;
+    @NotEmpty
+    String username;
 
-    @Column(length = 60)
-    private String passwordHash;
+    @NotEmpty
+    String passwordHash;
 
-    @Column(length = 100)
-    private String fullName;
+    @NotEmpty
+    String fullName;
 
     @OneToMany(mappedBy = "author")
     private Set<Post> posts = new HashSet<Post>();
@@ -70,24 +72,5 @@ public class User {
     public User() {
     }
 
-    public User(String username, String fullName) {
-        this.username = username;
-        this.fullName = fullName;
-    }
 
-    public User(Long id, String username, String fullName) {
-        this.id = id;
-        this.username = username;
-        this.fullName = fullName;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", passwordHash='" + passwordHash + '\'' +
-                ", fullName='" + fullName + '\'' +
-                '}';
-    }
 }

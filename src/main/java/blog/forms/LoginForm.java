@@ -1,18 +1,18 @@
 package blog.forms;
 
 import com.sun.istack.internal.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Size;
 
 public class LoginForm {
 
-    @Size(min = 2, max = 30,
-            message = "minimum 2, max 30")
-    private String username;
+    @NotEmpty
+    String username;
 
-    @Size(min = 3)
-    @NotNull
-    private String password;
+
+    @NotEmpty
+    String password;
 
     public String getUsername() {
         return username;

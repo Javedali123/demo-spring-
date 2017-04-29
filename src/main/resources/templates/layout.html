@@ -20,14 +20,14 @@
         <a href="index.html" th:href="@{/}"><img
                 src="../public/img/site-logo.png" th:src="@{/img/site-logo.png}" /></a>
         <a href="index.html" th:href="@{/}">Home</a>
-        <a href="users/login.html" th:href="@{/users/login}">Login</a>
+        <a href="login.html" th:href="@{/user/login}">Login</a>
         <a href="register.html" th:href="@{/user/register}">Register</a>
         <a href="posts/index.html" th:href="@{/user/postedit}">Posts</a>
         <a href="create.html" th:href="@{/user/create}">Create Post</a>
         <a href="postedit.html" th:href="@{/users}">Users</a>
         <div id="logged-in-info">
             <span>Hello, <b>(user)</b></span>
-            <form method="post" th:action="@{/users/logout}">
+            <form method="post" th:action="@{/user/logout}">
                 <input type="submit" value="Logout"/>
             </form>
         </div>

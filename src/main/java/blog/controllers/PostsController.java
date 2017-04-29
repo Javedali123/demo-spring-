@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -33,8 +34,12 @@ public class PostsController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
 
-    public String createView(Model model)
+    public String createView(Model model, HttpSession session)
     {
+        if(session.getAttribute("login")==null)
+        {
+            return "redirect:/user/login";
+        }
         Post post = new Post();
         model.addAttribute("post", post);
         return "create";
