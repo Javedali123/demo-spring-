@@ -13,7 +13,7 @@
     <tr>
         <th>Title</th>
         <th>Body</th>
-        <th>Author ID</th>
+        <th>Author</th>
         <th>Date</th>
         <th>Update</th>
         <th>Delete</th>
@@ -21,8 +21,8 @@
     <tr th:each="post : ${posts}">
         <td th:text="${post.title}">Alex</td>
         <td th:text="${post.body}">Parkinson</td>
-        <td th:text="${post.author}">alex</td>
-        <td th:text="${post.date}">17-jan02017</td>
+        <td th:text="${post.author.fullName}">alex</td>
+        <td th:text="${#dates.format(post.date, 'dd-MMM-yyyy')}">01-Mar-2017</td>
         <td><a href="#" th:href="@{/user/update/}+${post.id}">Update</a> </td>
         <td><a href="#" th:href="@{/user/delete/}+${post.id}">Delete</a> </td>
 
@@ -35,7 +35,7 @@
 <div>
     <ol>
         <li th:each="post : ${posts}">
-            <span th:text="${post.title}+' '+${post.body}+', '+${post.author}+', '+${post.date}"></span>
+            <span th:text="${post.title}+' '+${post.body}+', '+${post.author.fullName}+', '+${post.date}"></span>
             <td><a href="#" th:href="@{/user/update/}+${post.id}">Update</a> </td>
             <td><a href="#" th:href="@{/user/delete/}+${post.id}">delete</a> </td>
         </li>

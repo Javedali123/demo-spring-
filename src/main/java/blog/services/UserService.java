@@ -23,11 +23,13 @@ public class UserService {
 
    // public void delete(User user) { userRepository.delete(user); }
 
-    public List<User> validateLogin(LoginForm user)
+    public boolean validateLogin(LoginForm user)
     {
-   return userRepository.findByUsernameAndPasswordHash(user.getUsername(), user.getPassword());
-     //   List<User> users = userRepository.checkUserLogin(user.getUsername(), user.getPassword());
-      //  return users !=null && users.size()>0;
+
+        List<User> users = userRepository.findByUsernameAndPasswordHash(user.getUsername(), user.getPassword());
+
+
+       return users !=null && users.size()>0;
     }
 
 

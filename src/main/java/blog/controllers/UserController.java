@@ -59,7 +59,8 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
 //    @ResponseBody
-    public String login(Model model, @Valid @ModelAttribute("user") LoginForm user, BindingResult bindingResult)
+    public String login(Model model, @Valid @ModelAttribute("user") LoginForm user, BindingResult bindingResult,
+                        HttpSession session)
     {
         if(bindingResult.hasErrors())
         {
@@ -68,16 +69,38 @@ public class UserController {
             return "login";
         }
 
-        if(userService.validateLogin(user)==null || userService.validateLogin(user).size()==0)
+        if(userService.validateLogin(user)==false)
         {
             model.addAttribute("user", user);
 
             return "login";
 
         }
+
+        session.setAttribute("login", true);
+
         notificationService.addInfoMessage("Welcome");
+
         return "redirect:/";
     }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logoutView(Model model, HttpSession session)
+    {
+        session.removeAttribute("login");
+        return "redirect:/user/login";
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
+    //   @ResponseBody
+    public String logout(Model model, @ModelAttribute("user") User user, HttpSession session)
+    {
+        session.removeAttribute("login"); // calls user service method Save
+        //registration successful
+
+        return "redirect:/user/login";
+    }
+
 }
 
 
