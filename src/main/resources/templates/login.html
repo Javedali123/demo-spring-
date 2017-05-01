@@ -3,6 +3,7 @@
 
 <head th:replace="layout :: site-head">
     <title>Login</title>
+    <link href="../public/css/bootstrap.min.css" />
 </head>
 
 <body>
@@ -11,12 +12,39 @@
 
 <h2>Please login</h2>
 
-<form action="#" th:action="@{/user/login}" th:object="${user}" method="post">
-    <p>Username: </p> <input type="text" th:field="*{username}"/>
-    <p>Password: </p> <input type="password" th:field="*{password}"/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Login</div>
+                <div class="panel-body">
 
-    <p/><input type="submit" value="Login" />
+<form class="form-horizontal" action="#" th:action="@{/user/login}" th:object="${user}" method="post">
+    <div class="form-group">
+        <label th:for="username" class="col-md-4 control-label">Username</label>
+        <div class="col-md-6">
+    <input class="form-control" type="text" th:field="*{username}" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label th:for="password" class="col-md-4 control-label">Password</label>
+        <div class="col-md-6">
+        <input class="form-control" type="password" th:field="*{password}"/>
+        </div>
+    </div>
+        <div class="form-group">
+            <div class="col-md-8 col-md-offset-4">
+    <input class="btn btn-primary" type="submit" value="Login" />
+    </div>
+        </div>
+
+
 </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <footer th:replace="layout :: site-footer" />
 

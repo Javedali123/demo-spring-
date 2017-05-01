@@ -4,43 +4,54 @@
 
 <head th:replace="layout :: site-head">
     <title>Posts</title>
+    <link href="../public/css/bootstrap.min.css" />
 </head>
 
 <body>
 <header th:replace="layout :: site-header" />
 
-<table border="1px">
-    <tr>
-        <th>Title</th>
-        <th>Body</th>
-        <th>Author</th>
-        <th>Date</th>
-        <th>Update</th>
-        <th>Delete</th>
-    </tr>
-    <tr th:each="post : ${posts}">
-        <td th:text="${post.title}">Alex</td>
-        <td th:text="${post.body}">Parkinson</td>
-        <td th:text="${post.author.fullName}">alex</td>
-        <td th:text="${#dates.format(post.date, 'dd-MMM-yyyy')}">01-Mar-2017</td>
-        <td><a href="#" th:href="@{/user/update/}+${post.id}">Update</a> </td>
-        <td><a href="#" th:href="@{/user/delete/}+${post.id}">Delete</a> </td>
+<div class="row">
+    <div class="col-md-10">
+        <h1>All Posts</h1>
+    </div>
+    <p/>
 
-    </tr>
-
-</table>
-
-
-
-<div class="form-group">
-    <ol>
-        <li th:each="post : ${posts}">
-            <span th:text="${post.title}+' '+${post.body}+', '+${post.author.fullName}+', '+${post.date}"></span>
-            <td><a href="#" th:href="@{/user/update/}+${post.id}">Update</a> </td>
-            <td><a href="#" th:href="@{/user/delete/}+${post.id}">delete</a> </td>
-        </li>
-    </ol>
+    <div class="col-md-2">
+       <a class="btn btn-lg btn-primary" href="create.html" th:href="@{/user/create}">Create Post</a>
+    </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table>
+            <table class="table">
+                <thead>
+                <th>Title</th>
+                <th>Body</th>
+                <th>Author</th>
+                <th>Date</th>
+                <th>Update</th>
+                <th>Delete</th>
+                </thead>
+
+                <tbody>
+                <tr th:each="post : ${posts}">
+                    <td th:text="${post.title}">Alex</td>
+                    <td th:text="${post.body}">Parkinson</td>
+                    <td th:text="${post.author.fullName}">alex</td>
+                    <td th:text="${#dates.format(post.date, 'dd-MMM-yyyy')}">01-Mar-2017</td>
+                    <td><a class="btn btn-default btn-sm" href="#" th:href="@{/user/update/}+${post.id}">Update</a> </td>
+                    <td><a class="btn btn-default btn-sm" href="#" th:href="@{/user/delete/}+${post.id}">Delete</a> </td>
+                </tr>
+                </tbody>
+            </table>
+        </table>
+    </div>
+</div>
+
+
+
+
 
 
 <footer th:replace="layout :: site-footer" />
