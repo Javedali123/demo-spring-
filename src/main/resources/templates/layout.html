@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
+hhhee
 <head th:fragment="site-head">
-    <meta charset="UTF-8" />
+    <title>Javed's Blog Application</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../public/css/styles.css"
           th:href="@{/css/styles.css}" />
+    <link href="../public/css/bootstrap.min.css" />
     <link rel="icon" href="../public/img/favicon.ico"
           th:href="@{/img/favicon.ico}" />
     <script src="../public/js/jquery-3.1.0.min.js"
@@ -17,20 +22,36 @@
 
 <header th:fragment="site-header" th:remove="tag">
     <header>
-        <a href="index.html" th:href="@{/}"><img
-                src="../public/img/site-logo.png" th:src="@{/img/site-logo.png}" /></a>
-        <a href="index.html" th:href="@{/}">Home</a>
-        <a href="login.html" th:href="@{/user/login}">Login</a>
-        <a href="register.html" th:href="@{/user/register}">Register</a>
-        <a href="posts/index.html" th:href="@{/user/postedit}">Posts</a>
-        <a href="create.html" th:href="@{/user/create}">Create Post</a>
-        <a href="postedit.html" th:href="@{/users}">Users</a>
+        <nav class="navbar navbar-inverse bg-primary">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a href="index.html" class="navbar-brand" th:href="@{/}">Javed's Blog</a>
+                </div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="index.html" th:href="@{/}">Home</a></li>
+                        <li class="active"><a href="login.html" th:href="@{/user/login}">Login</a></li>
+                        <li class="active"><a href="register.html" th:href="@{/user/register}">Register</a></li>
+                        <li class="active"><a href="posts/index.html" th:href="@{/user/postedit}">Posts</a></li>
+                        <li class="active"><a href="create.html" th:href="@{/user/create}">Create Post</a></li>
+                        <li class="active"><a href="postedit.html" th:href="@{/users}">Users</a></li>
+                         </ul>
+                        <ul class="nav navbar-nav navbar-right">
         <div id="logged-in-info">
-            <span>Hello, <b>(user)</b></span>
+            <span> <b>(user)</b> </span>
             <form method="post" th:action="@{/user/logout}">
-                <input type="submit" value="Logout"/>
+                <li class="active"><input type="submit" value="Logout"/></li>
             </form>
         </div>
+                        </ul>
+
+                    </div>
+                </div>
+
+        </nav>
+
     </header>
 
     <ul id="messages" th:with="notifyMessages=${session[T(blog.services

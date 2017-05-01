@@ -32,7 +32,7 @@
 
 
 
-<div>
+<div class="form-group">
     <ol>
         <li th:each="post : ${posts}">
             <span th:text="${post.title}+' '+${post.body}+', '+${post.author.fullName}+', '+${post.date}"></span>
