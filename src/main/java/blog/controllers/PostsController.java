@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -47,18 +48,25 @@ public class PostsController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
 
-    public String create(Model model, @ModelAttribute("post") Post post)
-
+    public String create(Model model, @Valid @ModelAttribute("post") Post post, BindingResult bindingResult)
     {
+        if(bindingResult.hasErrors())
+        {
+            model.addAttribute("post", post);
+            notificationService.addErrorMessage("Please Fill in All Fields!");
+            return "create";
+        }
 
         postService.create(post);
-        return "redirect:/";
+        notificationService.addInfoMessage("Post Successful");
+        return "redirect:/user/postedit";
     }
 
     @RequestMapping(value = "/update/{post}", method = RequestMethod.GET)
 
     public String updateView(Model model, @PathVariable Post post)
     {
+
         model.addAttribute("post", post);
 
         return "update";
@@ -87,8 +95,12 @@ public class PostsController {
 
     @RequestMapping(value = "/postedit", method = RequestMethod.GET)
 
-       public String edit(Model model)
+       public String edit(Model model, HttpSession session)
     {
+        if(session.getAttribute("login")==null)
+        {
+            return "redirect:/user/login";
+        }
         List<Post> posts = postService.findAll();
 
         model.addAttribute("posts", posts);

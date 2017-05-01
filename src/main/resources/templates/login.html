@@ -10,13 +10,15 @@
 
 <header th:replace="layout :: site-header" />
 
-<h2>Please login</h2>
+
 
 <div class="container">
+    <h2>Please Login to Create Posts</h2>
+    <p/>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading">Login Form</div>
                 <div class="panel-body">
 
 <form class="form-horizontal" action="#" th:action="@{/user/login}" th:object="${user}" method="post">

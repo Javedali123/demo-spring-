@@ -95,7 +95,7 @@ public class UserController {
         // starts logged in session
         session.setAttribute("login", true);
 
-        notificationService.addInfoMessage("Welcome");
+        notificationService.addInfoMessage("Welcome, You are now Logged In");
 
         return "redirect:/";
     }
@@ -115,6 +115,7 @@ public class UserController {
     {
         // removes logged in session
         session.removeAttribute("login");
+        notificationService.addInfoMessage("You are now Logged Out");
         return "redirect:/user/login";
     }
 

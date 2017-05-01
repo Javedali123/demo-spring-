@@ -3,10 +3,13 @@
 
 <head th:replace="layout :: site-head">
     <title th:text="${post.title}">Post Details</title>
+
 </head>
 
 <body>
 <header th:replace="layout :: site-header" />
+<div class="container">
+    <div class="row">
 
 <main id="posts">
     <article>
@@ -19,9 +22,12 @@
                         post.author.fullName : post.author.username}">Javed Ali</span>
                 </span>
         </div>
+        <p/>
         <p class="content" th:utext="${post.body}">Post content</p>
     </article>
 </main>
+    </div>
+</div>
 
 <footer th:replace="layout :: site-footer" />
 </body>
