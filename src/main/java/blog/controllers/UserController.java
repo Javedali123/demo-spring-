@@ -1,9 +1,11 @@
 package blog.controllers;
 
 import blog.forms.LoginForm;
+import blog.forms.RegisterForm;
 import blog.models.User;
 import blog.services.NotificationService;
 import blog.services.UserService;
+import jdk.nashorn.internal.ir.IfNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +31,8 @@ public class UserController {
     @Autowired
     private NotificationService notificationService;
 
+    // User Registration
+
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String registerView(Model model)
     {
@@ -38,16 +42,25 @@ public class UserController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
- //   @ResponseBody
-    public String register(Model model, @ModelAttribute("user") User user)
-    {
-        userService.save(user); // calls user service method Save
-        //registration successful
+    // @ResponseBody
+    public String register(Model model, @Valid @ModelAttribute("user") User user, BindingResult bindingResult)
 
-        return "redirect:/";
-    }
+        {
+            if (bindingResult.hasErrors())
+            {
+                model.addAttribute("user", user);
+                notificationService.addErrorMessage("Please Fill all Fields!");
+                return "register";
+            }
+            // calls user service method Save
+            userService.save(user);
+            //registration successful
+            notificationService.addInfoMessage("Registration Successful");
+            return "redirect:/";
 
-    //LOGIN
+        }
+
+    // USER LOGIN
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginView(Model model)
@@ -58,7 +71,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-//    @ResponseBody
+    // @ResponseBody
     public String login(Model model, @Valid @ModelAttribute("user") LoginForm user, BindingResult bindingResult,
                         HttpSession session)
     {
@@ -69,6 +82,8 @@ public class UserController {
             return "login";
         }
 
+        // Login Validation
+
         if(userService.validateLogin(user)==false)
         {
             model.addAttribute("user", user);
@@ -77,12 +92,15 @@ public class UserController {
 
         }
 
+        // starts logged in session
         session.setAttribute("login", true);
 
         notificationService.addInfoMessage("Welcome");
 
         return "redirect:/";
     }
+
+    // User Logout
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutView(Model model, HttpSession session)
@@ -95,9 +113,8 @@ public class UserController {
     //   @ResponseBody
     public String logout(Model model, @ModelAttribute("user") User user, HttpSession session)
     {
-        session.removeAttribute("login"); // calls user service method Save
-        //registration successful
-
+        // removes logged in session
+        session.removeAttribute("login");
         return "redirect:/user/login";
     }
 

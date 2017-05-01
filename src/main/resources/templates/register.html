@@ -5,6 +5,7 @@
 <head th:replace="layout :: site-head">
     <title>Register</title>
 
+    <link href="../public/css/bootstrap.min.css" />
 
 </head>
 
@@ -12,25 +13,57 @@
 
 <header th:replace="layout :: site-header" />
 
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">User Registration</div>
+                <div class="panel-body">
 
 
-<h3>User Registration</h3>
 
-<form action="#" th:action="@{/user/register}" th:object="${user}" method="post">
+<form class="form-horizontal" action="#" th:action="@{/user/register}" th:object="${user}" method="post">
     <input type="hidden" th:field="*{id}"/>
-    <p>Username: </p> <input type="text" th:field="*{username}"/>
-    <p>Fullname: </p> <input type="text" th:field="*{fullName}"/>
-    <p>Password: </p> <input type="text" th:field="*{passwordHash}"/>
+    <div class="form-group">
+        <label th:for="username" class="col-md-4 control-label">Username</label>
+        <div class="col-md-6">
+     <input class="form-control" type="text" th:field="*{username}"/>
+        </div>
+    </div>
 
-    <p/><input type="submit" value="Register" />
+    <div class="form-group">
+        <label th:for="fullName" class="col-md-4 control-label">Full Name</label>
+        <div class="col-md-6">
+            <input class="form-control" type="text" th:field="*{fullName}"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label th:for="passwordHash" class="col-md-4 control-label">Password</label>
+        <div class="col-md-6">
+    <input class="form-control" type="text" th:field="*{passwordHash}"/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-8 col-md-offset-4">
+    <input class="btn btn-primary" type="submit" value="Register" />
+        </div>
+    </div>
 
 
 
 </form>
 
+
 <div th:if="${message!=null}">
     <p/>
     <span th:text="${message}"/>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 

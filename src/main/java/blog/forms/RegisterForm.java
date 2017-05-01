@@ -1,14 +1,17 @@
 package blog.forms;
 
-import com.sun.istack.internal.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.validation.constraints.Size;
-
-public class LoginForm {
+/**
+ * Created by Windows 7 on 01-May-17.
+ */
+public class RegisterForm {
 
     @NotEmpty
     String username;
+
+    @NotEmpty
+    String fullName;
 
     @NotEmpty
     String password;
@@ -21,6 +24,10 @@ public class LoginForm {
         this.username = username;
     }
 
+    public String getFullName() { return fullName; }
+
+    public void setFullName(String fullName) { this.fullName = fullName;}
+
     public String getPassword() {
         return password;
     }
@@ -29,3 +36,4 @@ public class LoginForm {
         this.password = password;
     }
 }
+

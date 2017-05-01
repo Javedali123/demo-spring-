@@ -2,8 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 hhhee
 <head th:fragment="site-head">
-    <title>Javed's Blog Application</title>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -16,6 +14,7 @@ hhhee
             th:src="@{/js/jquery-3.1.0.min.js}"></script>
     <script src="../public/js/blog-scripts.js" th:src="@{/js/blog-scripts.js}"></script>
     <meta th:include="this :: head" th:remove="tag"/>
+    <title>Javed's Blog Application</title>
 </head>
 
 <body>
@@ -28,32 +27,28 @@ hhhee
                 <div class="navbar-header">
                     <a href="index.html" class="navbar-brand" th:href="@{/}">Javed's Blog</a>
                 </div>
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="index.html" th:href="@{/}">Home</a></li>
-                        <li class="active"><a href="login.html" th:href="@{/user/login}">Login</a></li>
-                        <li class="active"><a href="register.html" th:href="@{/user/register}">Register</a></li>
-                        <li class="active"><a href="posts/index.html" th:href="@{/user/postedit}">Posts</a></li>
-                        <li class="active"><a href="create.html" th:href="@{/user/create}">Create Post</a></li>
-                        <li class="active"><a href="postedit.html" th:href="@{/users}">Users</a></li>
-                         </ul>
-                        <ul class="nav navbar-nav navbar-right">
-        <div id="logged-in-info">
-            <span> <b>(user)</b> </span>
-            <form method="post" th:action="@{/user/logout}">
-                <li class="active"><input type="submit" value="Logout"/></li>
-            </form>
-        </div>
-                        </ul>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a class="active" href="index.html" th:href="@{/}">Home</a></li>
+                        <li><a class="active" href="login.html" th:href="@{/user/login}">Login</a></li>
+                        <li><a class="active" href="register.html" th:href="@{/user/register}">Register</a></li>
+                        <li><a class="active" href="posts/index.html" th:href="@{/user/postedit}">Posts</a></li>
+                        <li><a class="active" href="create.html" th:href="@{/user/create}">Create Post</a></li>
+                    </ul>
 
-                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <div id="logged-in-info">
+                            <span> <b>Hello</b> </span>
+                            <form method="post" th:action="@{/user/logout}">
+                                <li><input class="btn btn-primary" type="submit" value="Logout"/></li>
+                            </form>
+                        </div>
+                    </ul>
                 </div>
-
+            </div>
         </nav>
-
     </header>
-
     <ul id="messages" th:with="notifyMessages=${session[T(blog.services
           .NotificationServiceImpl).NOTIFY_MSG_SESSION_KEY]}">
         <li th:each="msg : ${notifyMessages}"
@@ -65,9 +60,6 @@ hhhee
     </ul>
 </header>
 
-
-<h1>Welcome</h1>
-<p>Welcome to the Spring MVC Blog.</p>
 
 <footer th:fragment="site-footer">
      ------------------Javed Ali U1669848 My Spring Blog Project @2017-----------------

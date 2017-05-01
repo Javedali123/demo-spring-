@@ -34,19 +34,19 @@
        <div class="form-group">
            <label th:for="body" class="col-md-4 control-label">Post Body</label>
            <div class="col-md-8">
-   <input class="form-control"  type="text" th:field="*{body}"/>
+   <textarea class="form-control"  type="text" th:field="*{body}"/>
        </div>
        </div>
 
     <div class="form-group">
-        <label th:for="author" class="col-md-4 control-label">Author Name</label>
+        <label th:for="author" class="col-md-4 control-label">Author ID</label>
         <div class="col-md-6">
      <input class="form-control" type="text" th:field="*{author}"/>
         </div>
     </div>
 
     <div class="form-group">
-        <label th:for="date" class="col-md-4 control-label">Date</label>
+        <label th:for="date" class="col-md-4 control-label">Date (DD-MMM-YYYY)</label>
         <div class="col-md-6">
    <input class="form-control" type="datetime" th:field="*{date}"/>
         </div>
