@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layout :: site-head">
-    <title>Login</title>
     <link href="../public/css/bootstrap.min.css" />
     <script src="https://apis.google.com/js/platform.js" />
     <meta name="google-signin-client_id" content="838240145598-uf9b7ia9qbjfb4m739jsgg7qhh0s678f.apps.googleusercontent.com" />
     <meta name="google-signin-scope" content="profile email" />
+    <title>Login</title>
 </head>
 
 <body>
@@ -47,6 +47,7 @@
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
                                 <input class="btn btn-primary" type="submit" value="Login" />
+                                <a class="btn btn-primary" href="register.html" th:href="@{/user/register}">Register</a>
                             </div>
                         </div>
 

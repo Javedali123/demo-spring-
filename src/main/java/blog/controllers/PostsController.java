@@ -92,7 +92,7 @@ public class PostsController {
     {
 
         postService.delete(post);
-
+        notificationService.addInfoMessage("Post Successfully Deleted");
         return "redirect:/user/postedit";
 
     }
