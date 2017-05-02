@@ -55,7 +55,7 @@ public class UserController {
             userService.save(user);
             //registration successful
             notificationService.addInfoMessage("Registration Successful");
-            return "redirect:/";
+            return "redirect:/user/login";
 
         }
 
@@ -86,16 +86,14 @@ public class UserController {
         if(userService.validateLogin(user)==false)
         {
             model.addAttribute("user", user);
-            notificationService.addErrorMessage("Username or Password Incorred! Try Again");
+            notificationService.addErrorMessage("Username or Password Incorrect! Try Again");
             return "login";
 
         }
 
         // starts logged in session
         session.setAttribute("login", true);
-
         notificationService.addInfoMessage("Welcome, You are now Logged In");
-
         return "redirect:/";
     }
 

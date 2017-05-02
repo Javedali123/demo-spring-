@@ -69,11 +69,8 @@ public class PostsController {
 
     public String updateView(Model model, @PathVariable Post post)
     {
-
         model.addAttribute("post", post);
-
         return "update";
-
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -81,7 +78,7 @@ public class PostsController {
     public String update(@ModelAttribute("post") Post post)
     {
         postService.create(post);
-
+        notificationService.addInfoMessage("Post Updated Successfully");
         return "redirect:/user/postedit";
     }
 
@@ -90,11 +87,9 @@ public class PostsController {
 
     public String delete(@PathVariable Post post)
     {
-
         postService.delete(post);
         notificationService.addInfoMessage("Post Successfully Deleted");
         return "redirect:/user/postedit";
-
     }
 
     // allows logged in user to see all posts
@@ -107,9 +102,7 @@ public class PostsController {
             return "redirect:/user/login";
         }
         List<Post> posts = postService.findAll();
-
         model.addAttribute("posts", posts);
-
         return "postedit";
 
     }

@@ -36,7 +36,6 @@ public class HomeController {
         List<Post> latest3Posts = latest5Posts.stream()
                 .limit(3).collect(toList());
         model.addAttribute("latest3posts", latest3Posts);
-
         return "index";
     }
 
