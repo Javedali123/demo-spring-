@@ -14,6 +14,7 @@ import java.util.List;
 @Repository
 public interface PostRepository extends
         JpaRepository<Post, Long> {
+    // finds latest posts and in order by date
     @Query("SELECT p FROM Post p LEFT JOIN FETCH p.author ORDER BY p.date DESC")
     List<Post> findLatest5Posts();
 }

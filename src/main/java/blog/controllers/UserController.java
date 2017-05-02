@@ -24,15 +24,14 @@ import javax.validation.Valid;
 @RequestMapping(value = "/user")
 
 public class UserController {
+
     @Autowired
     UserService userService;
-
 
     @Autowired
     private NotificationService notificationService;
 
     // User Registration
-
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String registerView(Model model)
     {
@@ -118,7 +117,6 @@ public class UserController {
         notificationService.addInfoMessage("You are now Logged Out");
         return "redirect:/user/login";
     }
-
 }
 
 

@@ -3,16 +3,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layout :: site-head">
-    <title>Register</title>
-
     <link href="../public/css/bootstrap.min.css" />
-
+    <title>Register</title>
 </head>
 
 <body>
 
 <header th:replace="layout :: site-header" />
 
+<!-- User Registration Form -->
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -20,57 +19,53 @@
                 <div class="panel-heading">User Registration</div>
                 <div class="panel-body">
 
+                    <form class="form-horizontal" action="#" th:action="@{/user/register}" th:object="${user}" method="post">
+                        <input type="hidden" th:field="*{id}"/>
 
+                        <!-- Input field for username -->
+                        <div class="form-group">
+                            <label th:for="username" class="col-md-4 control-label">Username</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" th:field="*{username}"/>
+                            </div>
+                        </div>
 
-<form class="form-horizontal" action="#" th:action="@{/user/register}" th:object="${user}" method="post">
-    <input type="hidden" th:field="*{id}"/>
-    <div class="form-group">
-        <label th:for="username" class="col-md-4 control-label">Username</label>
-        <div class="col-md-6">
-     <input class="form-control" type="text" th:field="*{username}"/>
+                        <!-- Input field for Full Name -->
+                        <div class="form-group">
+                            <label th:for="fullName" class="col-md-4 control-label">Full Name</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" th:field="*{fullName}"/>
+                            </div>
+                        </div>
 
-        </div>
-    </div>
+                        <!-- Input field for password -->
+                        <div class="form-group">
+                            <label th:for="passwordHash" class="col-md-4 control-label">Password</label>
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" th:field="*{passwordHash}"/>
+                            </div>
+                        </div>
 
-    <div class="form-group">
-        <label th:for="fullName" class="col-md-4 control-label">Full Name</label>
-        <div class="col-md-6">
-            <input class="form-control" type="text" th:field="*{fullName}"/>
-        </div>
-    </div>
+                        <!-- Register Button -->
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <input class="btn btn-primary" type="submit" value="Register" />
+                            </div>
+                        </div>
+                    </form>
 
-    <div class="form-group">
-        <label th:for="passwordHash" class="col-md-4 control-label">Password</label>
-        <div class="col-md-6">
-    <input class="form-control" type="text" th:field="*{passwordHash}"/>
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-8 col-md-offset-4">
-    <input class="btn btn-primary" type="submit" value="Register" />
-        </div>
-    </div>
-
-
-
-</form>
-
-
-<div th:if="${message!=null}">
-    <p/>
-    <span th:text="${message}"/>
-</div>
+                    <div th:if="${message!=null}">
+                        <p/>
+                        <span th:text="${message}"/>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
 <footer th:replace="layout :: site-footer" />
+
 </body>
-
-
 
 </html>

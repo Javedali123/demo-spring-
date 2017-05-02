@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
+// notification service
 @Service()
 public class NotificationServiceImpl implements NotificationService {
 

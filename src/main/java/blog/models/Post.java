@@ -7,6 +7,8 @@ package blog.models;
 import javax.persistence.*;
 import java.util.Date;
 
+// post entity, data constraints
+
 @Entity
 @Table(name = "posts")
 public class Post {

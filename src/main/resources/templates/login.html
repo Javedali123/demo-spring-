@@ -13,6 +13,7 @@
 
 <header th:replace="layout :: site-header" />
 
+<!-- User Login Page -->
 <div class="container">
     <h2>Please Login to Create Posts</h2>
     <p/>
@@ -22,12 +23,16 @@
                 <div class="panel-heading">Login Form</div>
                 <div class="panel-body">
                     <form class="form-horizontal" action="#" th:action="@{/user/login}" th:object="${user}" method="post">
+
+                        <!-- Username input field-->
                         <div class="form-group">
                             <label th:for="username" class="col-md-4 control-label">Username</label>
                             <div class="col-md-6">
                                 <input class="form-control" type="text" th:field="*{username}" />
                             </div>
                         </div>
+
+                        <!-- Password input field -->
                         <div class="form-group">
                             <label th:for="password" class="col-md-4 control-label">Password</label>
                             <div class="col-md-6">
@@ -37,11 +42,15 @@
                                       th:errors="*{password}">Invalid password</span>
                             </div>
                         </div>
+
+                        <!-- Login Button -->
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
                                 <input class="btn btn-primary" type="submit" value="Login" />
                             </div>
                         </div>
+
+                        <!-- Google Login -->
                         <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
                         <script>
                             function onSignIn(googleUser) {

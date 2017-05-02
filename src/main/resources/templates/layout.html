@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
+<!-- Head Fragment -->
 <head th:fragment="site-head">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -17,8 +18,10 @@
 
 <body>
 
+<!-- Site Header Fragment -->
 <header th:fragment="site-header" th:remove="tag">
     <header>
+        <!-- Navigation bar -->
         <nav class="navbar navbar-inverse bg-primary">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -58,7 +61,7 @@
     </ul>
 </header>
 
-
+<!-- Footer Fragment -->
 <footer th:fragment="site-footer">
      ------------------Javed Ali U1669848 My Spring Blog Project @2017-----------------
 </footer>

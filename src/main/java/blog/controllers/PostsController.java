@@ -33,6 +33,7 @@ public class PostsController {
     @Autowired
     private NotificationService notificationService;
 
+    // allows logged in users to see posts
     @RequestMapping(value = "/create", method = RequestMethod.GET)
 
     public String createView(Model model, HttpSession session)
@@ -46,6 +47,7 @@ public class PostsController {
         return "create";
     }
 
+    // allows loged in users to create posts
     @RequestMapping(value = "/create", method = RequestMethod.POST)
 
     public String create(Model model, @Valid @ModelAttribute("post") Post post, BindingResult bindingResult)
@@ -62,6 +64,7 @@ public class PostsController {
         return "redirect:/user/postedit";
     }
 
+    // allows a user to update posts
     @RequestMapping(value = "/update/{post}", method = RequestMethod.GET)
 
     public String updateView(Model model, @PathVariable Post post)
@@ -82,6 +85,7 @@ public class PostsController {
         return "redirect:/user/postedit";
     }
 
+    // allows a user to delete posts
     @RequestMapping (value = "/delete/{post}", method = RequestMethod.GET)
 
     public String delete(@PathVariable Post post)
@@ -93,6 +97,7 @@ public class PostsController {
 
     }
 
+    // allows logged in user to see all posts
     @RequestMapping(value = "/postedit", method = RequestMethod.GET)
 
        public String edit(Model model, HttpSession session)
@@ -108,13 +113,4 @@ public class PostsController {
         return "postedit";
 
     }
-
-
-
-
-
-
-
-
-
 }

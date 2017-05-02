@@ -27,7 +27,7 @@ public class HomeController {
     @Autowired
     private NotificationService notificationService;
 
-    // Display the latest posts
+    // Display the latest posts in homepage
     @RequestMapping(value={"/"})
     public String home(Model model) {
         List<Post> latest5Posts = postService.findLatest5();
@@ -40,7 +40,7 @@ public class HomeController {
         return "index";
     }
 
-    // display post when post is clicked
+    // Display post when post is clicked
     @RequestMapping("/posts/view/{id}")
     public String view(@PathVariable("id") Long id,
                        Model model) {

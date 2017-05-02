@@ -17,6 +17,7 @@ public interface UserRepository extends
 
     List<User> findByUsernameAndPasswordHash(String username, String password);
 
+    //checks if username and password match
     @Query("SELECT user FROM User user WHERE user.username=?1 and user.passwordHash=?2")
     List<User> checkUserLogin(String username, String password);
 
