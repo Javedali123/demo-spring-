@@ -17,12 +17,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, length = 30, unique = true)
     @NotEmpty
     String username;
 
+    @Column(length = 60)
     @NotEmpty
     String passwordHash;
 
+    @Column(length = 100)
     @NotEmpty
     String fullName;
 

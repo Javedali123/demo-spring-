@@ -87,7 +87,7 @@ public class UserController {
         if(userService.validateLogin(user)==false)
         {
             model.addAttribute("user", user);
-
+            notificationService.addErrorMessage("Username or Password Incorred! Try Again");
             return "login";
 
         }

@@ -2,17 +2,22 @@ package blog.forms;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.persistence.Column;
+
 /**
  * Created by Windows 7 on 01-May-17.
  */
 public class RegisterForm {
 
+    @Column(nullable = false, length = 30, unique = true)
     @NotEmpty
     String username;
 
+    @Column(length = 60)
     @NotEmpty
     String fullName;
 
+    @Column(length = 100)
     @NotEmpty
     String password;
 
