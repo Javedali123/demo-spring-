@@ -7,6 +7,7 @@
 </head>
 
 <body>
+
 <header th:replace="layout :: site-header" />
 
 <div class="row">
@@ -36,9 +37,9 @@
             <i>Posted on</i>
             <span th:text="${#dates.format(p.date, 'dd-MMM-yyyy')}">01-Mar-2017</span>
             <span th:if="${p.author}" th:remove="tag">
-                    <i>by</i> <span th:text="${p.author.fullName != null ?
+                <i>by</i> <span th:text="${p.author.fullName != null ?
                         p.author.fullName : p.author.username}">Javed Ali</span>
-                </span>
+            </span>
         </div>
         <p/>
         <p class="content" th:utext="${p.body}">Post content</p>
@@ -48,6 +49,7 @@
 </main>
 
 <footer th:replace="layout :: site-footer" />
+
 </body>
 
 </html>

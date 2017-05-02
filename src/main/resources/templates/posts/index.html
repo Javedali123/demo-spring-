@@ -7,29 +7,31 @@
 </head>
 
 <body>
+
 <header th:replace="layout :: site-header" />
+
 <div class="container">
     <div class="row">
-
-<main id="posts">
-    <article>
-        <h2 class="title" th:text="${post.title}">Post Title</h2>
-        <div class="date">
-            <i>Posted on</i>
-            <span th:text="${#dates.format(post.date, 'dd-MMM-yyyy')}">??/??/????</span>
-            <span th:if="${post.author}" th:remove="tag">
-                    <i>by</i> <span th:text="${post.author.fullName != null ?
-                        post.author.fullName : post.author.username}">Javed Ali</span>
-                </span>
-        </div>
-        <p/>
-        <p class="content" th:utext="${post.body}">Post content</p>
-    </article>
-</main>
+        <main id="posts">
+            <article>
+                <h2 class="title" th:text="${post.title}">Post Title</h2>
+                <div class="date">
+                    <i>Posted on</i>
+                    <span th:text="${#dates.format(post.date, 'dd-MMM-yyyy')}">??/??/????</span>
+                    <span th:if="${post.author}" th:remove="tag">
+                        <i>by</i> <span th:text="${post.author.fullName != null ?
+                       post.author.fullName : post.author.username}">Javed Ali</span>
+                    </span>
+                </div>
+                <p/>
+                <p class="content" th:utext="${post.body}">Post content</p>
+            </article>
+        </main>
     </div>
 </div>
 
 <footer th:replace="layout :: site-footer" />
+
 </body>
 
 </html>
